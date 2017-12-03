@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Hospital.Desktop
@@ -15,6 +8,17 @@ namespace Hospital.Desktop
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            if (txtLogin.Text == "admin")
+                if (txtPassword.Text == "admin")
+                {
+                    var f = new Form1();
+                    f.Show();
+                    this.Hide();
+                }
         }
     }
 }

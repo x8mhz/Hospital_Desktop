@@ -39,10 +39,9 @@
             // gridHospital
             // 
             this.gridHospital.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridHospital.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridHospital.Location = new System.Drawing.Point(0, 0);
+            this.gridHospital.Location = new System.Drawing.Point(0, 3);
             this.gridHospital.Name = "gridHospital";
-            this.gridHospital.Size = new System.Drawing.Size(934, 572);
+            this.gridHospital.Size = new System.Drawing.Size(934, 569);
             this.gridHospital.TabIndex = 2;
             // 
             // metroTabPage1

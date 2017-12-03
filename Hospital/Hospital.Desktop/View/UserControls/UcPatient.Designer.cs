@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcPatient));
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
@@ -42,7 +43,6 @@
             this.txtCity = new MetroFramework.Controls.MetroTextBox();
             this.txtState = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.dtBirthDate = new MetroFramework.Controls.MetroDateTime();
             this.cboxWoman = new MetroFramework.Controls.MetroCheckBox();
             this.cboxMan = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -50,6 +50,9 @@
             this.txtDocument = new MetroFramework.Controls.MetroTextBox();
             this.txtName = new MetroFramework.Controls.MetroTextBox();
             this.btnAddPatient = new ns1.BunifuFlatButton();
+            this.dtBirthDate = new System.Windows.Forms.DateTimePicker();
+            this.progbarAddPatient = new Bunifu.Framework.UI.BunifuCircleProgressbar();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPacient)).BeginInit();
@@ -62,7 +65,7 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(942, 578);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -86,14 +89,15 @@
             // gridPacient
             // 
             this.gridPacient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridPacient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridPacient.Location = new System.Drawing.Point(0, 0);
+            this.gridPacient.Location = new System.Drawing.Point(0, 3);
             this.gridPacient.Name = "gridPacient";
-            this.gridPacient.Size = new System.Drawing.Size(934, 536);
+            this.gridPacient.Size = new System.Drawing.Size(931, 533);
             this.gridPacient.TabIndex = 2;
             // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.progbarAddPatient);
+            this.metroTabPage2.Controls.Add(this.dtBirthDate);
             this.metroTabPage2.Controls.Add(this.cboxCountry);
             this.metroTabPage2.Controls.Add(this.txtNotice);
             this.metroTabPage2.Controls.Add(this.cboxSpecialization);
@@ -103,7 +107,6 @@
             this.metroTabPage2.Controls.Add(this.txtCity);
             this.metroTabPage2.Controls.Add(this.txtState);
             this.metroTabPage2.Controls.Add(this.metroLabel2);
-            this.metroTabPage2.Controls.Add(this.dtBirthDate);
             this.metroTabPage2.Controls.Add(this.cboxWoman);
             this.metroTabPage2.Controls.Add(this.cboxMan);
             this.metroTabPage2.Controls.Add(this.metroLabel1);
@@ -616,15 +619,6 @@
             this.metroLabel2.TabIndex = 30;
             this.metroLabel2.Text = "Nascimento";
             // 
-            // dtBirthDate
-            // 
-            this.dtBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtBirthDate.Location = new System.Drawing.Point(93, 227);
-            this.dtBirthDate.MinimumSize = new System.Drawing.Size(0, 29);
-            this.dtBirthDate.Name = "dtBirthDate";
-            this.dtBirthDate.Size = new System.Drawing.Size(169, 29);
-            this.dtBirthDate.TabIndex = 29;
-            // 
             // cboxWoman
             // 
             this.cboxWoman.AutoSize = true;
@@ -758,8 +752,8 @@
             // 
             // btnAddPatient
             // 
-            this.btnAddPatient.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnAddPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnAddPatient.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            this.btnAddPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(102)))), ((int)(((byte)(214)))));
             this.btnAddPatient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAddPatient.BorderRadius = 0;
             this.btnAddPatient.ButtonText = "   Adicionar Paciente";
@@ -779,8 +773,8 @@
             this.btnAddPatient.IsTab = false;
             this.btnAddPatient.Location = new System.Drawing.Point(482, 27);
             this.btnAddPatient.Name = "btnAddPatient";
-            this.btnAddPatient.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnAddPatient.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            this.btnAddPatient.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(102)))), ((int)(((byte)(214)))));
+            this.btnAddPatient.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnAddPatient.OnHoverTextColor = System.Drawing.Color.White;
             this.btnAddPatient.selected = false;
             this.btnAddPatient.Size = new System.Drawing.Size(447, 48);
@@ -790,6 +784,46 @@
             this.btnAddPatient.Textcolor = System.Drawing.Color.White;
             this.btnAddPatient.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddPatient.Click += new System.EventHandler(this.btnAddPatient_Click);
+            // 
+            // dtBirthDate
+            // 
+            this.dtBirthDate.CalendarForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dtBirthDate.CalendarTitleForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dtBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtBirthDate.Location = new System.Drawing.Point(93, 225);
+            this.dtBirthDate.Name = "dtBirthDate";
+            this.dtBirthDate.Size = new System.Drawing.Size(169, 26);
+            this.dtBirthDate.TabIndex = 42;
+            this.dtBirthDate.Value = new System.DateTime(2017, 12, 3, 0, 0, 0, 0);
+            // 
+            // progbarAddPatient
+            // 
+            this.progbarAddPatient.animated = false;
+            this.progbarAddPatient.animationIterval = 5;
+            this.progbarAddPatient.animationSpeed = 300;
+            this.progbarAddPatient.BackColor = System.Drawing.Color.Transparent;
+            this.progbarAddPatient.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("progbarAddPatient.BackgroundImage")));
+            this.progbarAddPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
+            this.progbarAddPatient.ForeColor = System.Drawing.Color.Black;
+            this.progbarAddPatient.LabelVisible = false;
+            this.progbarAddPatient.LineProgressThickness = 8;
+            this.progbarAddPatient.LineThickness = 5;
+            this.progbarAddPatient.Location = new System.Drawing.Point(435, 27);
+            this.progbarAddPatient.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.progbarAddPatient.MaxValue = 100;
+            this.progbarAddPatient.Name = "progbarAddPatient";
+            this.progbarAddPatient.ProgressBackColor = System.Drawing.Color.LightGray;
+            this.progbarAddPatient.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            this.progbarAddPatient.Size = new System.Drawing.Size(48, 48);
+            this.progbarAddPatient.TabIndex = 43;
+            this.progbarAddPatient.Value = 0;
+            this.progbarAddPatient.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // UcPatient
             // 
@@ -823,12 +857,14 @@
         private MetroFramework.Controls.MetroTextBox txtCity;
         private MetroFramework.Controls.MetroTextBox txtState;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroDateTime dtBirthDate;
         private MetroFramework.Controls.MetroCheckBox cboxWoman;
         private MetroFramework.Controls.MetroCheckBox cboxMan;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroComboBox cboxSpecialization;
         private MetroFramework.Controls.MetroTextBox txtNotice;
         private MetroFramework.Controls.MetroComboBox cboxCountry;
+        private System.Windows.Forms.DateTimePicker dtBirthDate;
+        private Bunifu.Framework.UI.BunifuCircleProgressbar progbarAddPatient;
+        private System.Windows.Forms.Timer timer1;
     }
 }

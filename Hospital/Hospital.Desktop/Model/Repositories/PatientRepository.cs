@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using Hospital.Desktop.Model.Data;
 using Hospital.Desktop.Model.Entities;
 
 namespace Hospital.Desktop.Model.Repositories
 {
     public class PatientRepository : IPatientRepository
     {
+        private SqlDataReader _dr;
+
         public bool SavePatient(List<string> patientList)
         {
             try
@@ -28,41 +31,69 @@ namespace Hospital.Desktop.Model.Repositories
                     Specialization = patientList[12]
                 };
 
-                var con = new SqlConnection(@"Data Source=DESKTOP-KK4D9PQ\SQLEXPRESS;Initial Catalog=Hospital;Integrated Security=True");
-                con.Open();
-                var cmd = new SqlCommand(
-                    "INSERT INTO TabPatient(Id, Name, Genere, BirthDate, Cpf, Telephone, ZipCode, Street, Number, Country, State, City, Notice, Specialization) VALUES(@a, @b, @c, @d, @e, @f, @g, @h, @i, @j, @l, @m, @n, @o)")
+                var con = new Connection
                 {
-                    Connection = con
-                };
+                    StrCommand = {CommandText = @"INSERT INTO TabPatient(Name, Genere, BirthDate, Cpf, Telephone, ZipCode, Street, Number, Country, State, City, Notice, Specialization) VALUES(@b, @c, @d, @e, @f, @g, @h, @i, @j, @l, @m, @n, @o)" }};
+                con.OpenConnection();
 
-                cmd.Parameters.AddWithValue("@a", patient.Id);
-                cmd.Parameters.AddWithValue("@b", patient.Name);
-                cmd.Parameters.AddWithValue("@c", patient.Genere);
-                cmd.Parameters.AddWithValue("@d", patient.BirthDate);
-                cmd.Parameters.AddWithValue("@e", patient.Cpf);
-                cmd.Parameters.AddWithValue("@f", patient.Telephone);
-                cmd.Parameters.AddWithValue("@g", patient.ZipCode);
-                cmd.Parameters.AddWithValue("@h", patient.Street);
-                cmd.Parameters.AddWithValue("@i", patient.Number);
-                cmd.Parameters.AddWithValue("@j", patient.Country);
-                cmd.Parameters.AddWithValue("@l", patient.State);
-                cmd.Parameters.AddWithValue("@m", patient.City);
-                cmd.Parameters.AddWithValue("@n", patient.Notice);
-                cmd.Parameters.AddWithValue("@o", patient.Specialization);
+                con.StrCommand.Parameters.AddWithValue("@b", patient.Name);
+                con.StrCommand.Parameters.AddWithValue("@c", patient.Genere);
+                con.StrCommand.Parameters.AddWithValue("@d", patient.BirthDate);
+                con.StrCommand.Parameters.AddWithValue("@e", patient.Cpf);
+                con.StrCommand.Parameters.AddWithValue("@f", patient.Telephone);
+                con.StrCommand.Parameters.AddWithValue("@g", patient.ZipCode);
+                con.StrCommand.Parameters.AddWithValue("@h", patient.Street);
+                con.StrCommand.Parameters.AddWithValue("@i", patient.Number);
+                con.StrCommand.Parameters.AddWithValue("@j", patient.Country);
+                con.StrCommand.Parameters.AddWithValue("@l", patient.State);
+                con.StrCommand.Parameters.AddWithValue("@m", patient.City);
+                con.StrCommand.Parameters.AddWithValue("@n", patient.Notice);
+                con.StrCommand.Parameters.AddWithValue("@o", patient.Specialization);
 
-
-                con.Close();
-                Console.WriteLine("SIM SIM SIM SIM");
+                con.StrCommand.ExecuteNonQuery();
+                con.CloseConnection();
 
                 return true;
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("ERRO ERRO ERRO ERRO");
                 Console.WriteLine(ex);
                 return false;
             }
+        }
+
+        public IEnumerable<Patient> GetAllPacients()
+        {
+            var con = new Connection { StrCommand = {CommandText = @"SELECT * FROM TabPatient"}};
+            con.OpenConnection();
+            _dr = con.StrCommand.ExecuteReader();
+
+            var list = new List<Patient>();
+
+            while (_dr.Read())
+            {
+                list.Add(new Patient
+                {
+                    Id = _dr.GetInt32(0),
+                    Name = _dr.GetString(1),
+                    Genere = _dr.GetString(2),
+                    BirthDate = _dr.GetString(3),
+                    Cpf = _dr.GetString(4),
+                    Telephone = _dr.GetString(5),
+                    ZipCode = _dr.GetString(6),
+                    Street = _dr.GetString(7),
+                    Number = _dr.GetString(8),
+                    Country = _dr.GetString(9),
+                    State = _dr.GetString(10),
+                    City = _dr.GetString(11),
+                    Notice = _dr.GetString(12),
+                    Specialization = _dr.GetString(13)
+                });
+            }
+
+            con.CloseConnection();
+
+            return list;
         }
     }
 }

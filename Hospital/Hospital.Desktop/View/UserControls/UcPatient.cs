@@ -1,6 +1,8 @@
 ﻿using Hospital.Desktop.Presenter;
 using System;
+using System.Globalization;
 using System.Windows.Forms;
+using Hospital.Desktop.Model.Repositories;
 using Hospital.Desktop.View.Services;
 
 namespace Hospital.Desktop.View.UserControls
@@ -9,30 +11,73 @@ namespace Hospital.Desktop.View.UserControls
     {
         private static UcPatient _instancia;
         private string _genere;
-        private string _birthDate;
 
+        public static UcPatient Instancia => _instancia ?? (_instancia = new UcPatient());
 
-        public static UcPatient Instancia
-        {
-            get
-            {
-                if (_instancia == null)
-                {
-                    _instancia = new UcPatient();
-                }
-                return _instancia;
-            }
-        }
         public UcPatient()
         {
             InitializeComponent();
+
+            new PatientPresenter(this, new PatientRepository());
         }
 
         private void btnAddPatient_Click(object sender, System.EventArgs e)
         {
+            ProgressiveBar();
+
             Genere();
             var presenter = new PatientPresenter(this);
             presenter.SavePatient();
+            ClearTextbox(this);
+
+            new PatientPresenter(this, new PatientRepository());
+        }
+
+        #region ProgressiveBar
+
+        public void ProgressiveBar()
+        {
+            progbarAddPatient.Enabled = true;
+            progbarAddPatient.Visible = true;
+            progbarAddPatient.Value = 0;
+            timer1.Enabled = true;
+            timer1.Start();
+
+            progbarAddPatient.MaxValue = 10;
+            timer1.Tick += timer1_Tick;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (progbarAddPatient.Value != 10)
+            {
+                progbarAddPatient.Value++;
+            }
+            else
+            {
+                MessageBox.Show(@"Paciente salco com sucesso!");
+                timer1.Stop();
+                progbarAddPatient.Value = 0;
+                progbarAddPatient.Visible = false;
+                progbarAddPatient.Enabled = false;
+                timer1.Enabled = false;              
+            }
+        }
+
+        #endregion
+
+        public void ClearTextbox(Control con)
+        {
+            txtName.Clear();
+            txtDocument.Clear();
+            txtZipCode.Clear();
+            txtStreet.Clear();
+            txtNumber.Clear();
+            txtTelephone.Clear();
+            txtNotice.Clear();
+            txtCity.Clear();
+            txtState.Clear();
+            dtBirthDate.Text = DateTime.Now.ToString(CultureInfo.InvariantCulture);
         }
 
         public void Genere()
@@ -45,10 +90,15 @@ namespace Hospital.Desktop.View.UserControls
             {
                 _genere = "Masculino";
             }
-
         }
 
         #region ViewImplementation
+
+        public object GridDataSource
+        {
+            get => gridPacient.DataSource;
+            set => gridPacient.DataSource = value;
+        }
 
         public string NameComplete
         {
@@ -128,8 +178,7 @@ namespace Hospital.Desktop.View.UserControls
             set { cboxSpecialization.Text = value; }
         }
 
+
         #endregion
-
-
     }
 }

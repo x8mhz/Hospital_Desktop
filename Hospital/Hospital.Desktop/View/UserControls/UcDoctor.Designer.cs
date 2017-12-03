@@ -39,10 +39,9 @@
             // gridDoctor
             // 
             this.gridDoctor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridDoctor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridDoctor.Location = new System.Drawing.Point(0, 0);
+            this.gridDoctor.Location = new System.Drawing.Point(0, 3);
             this.gridDoctor.Name = "gridDoctor";
-            this.gridDoctor.Size = new System.Drawing.Size(934, 572);
+            this.gridDoctor.Size = new System.Drawing.Size(934, 569);
             this.gridDoctor.TabIndex = 2;
             // 
             // tabDoctor

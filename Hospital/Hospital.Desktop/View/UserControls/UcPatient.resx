@@ -118,6 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="progbarAddPatient.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKdSURBVGhD7VkrUCNBEI1EnkSePHkSGYlERiKRSGTcSWQk
+        EhmJREbmW4VcGYlE5t6j3qYuPb1LstPLQdW8qlep2ul93T3TMz1JBgUFBQUFBZFYLBaX6/V6vFqtHsHn
+        mng25XNwVFXVmcy/BjabzW8GjOBewd2RnOKdK0n8H8zn858MxAR2ErU6Q0l+HuB0BOdv/waTybGk+wcC
+        v3MCyCbLsPf98VHwWhXW9w0+hzWXy+U1Ph/Aj/bJk1zFA+Ij42xPBLxFkLfHzCBsr/BOZTVq4lC4l2kc
+        dNI01fy0y9LjPR6rnt6Ox7HMYgBR97TJnS1oNK3qS9h+4Ow7DsipTLLA0nO0d3wukzxALJl91nzkiQHN
+        J+sDrDTcHQzSq/2w2RGaVpnPZdINOjGs8Gvk7NeAL3Zl6yuvwUFgYgTJBw2HAgl4PWam4W6AQFL/bEoa
+        DgUS+GV9gXn7AKJzK4oELjQcCpal9UVquBuQwNYK8haq4XBAP7lqZPmDwIsVzD4ZWmB9kVkHhncyhLd5
+        Qd8vDnyxAjTcDRDhDfJAFPyj4VDwcLC+uAc13A0Q4LX4QBTM75AO4ItfS62viYa7wVtWMnofQO8cCSQd
+        P6RcITSzwnym4RAggXvrgwmFdHzee6y4HNzIJAvsK97sMymZ5AMOkoYmp1m/KLBEoZP0GmqzrGSWDwh6
+        l7o6iZHMToJmPgme5KrLLA4Q9i5270Qgj8d2TNj9YHkoeU/ruY/bbv3dwLvy7slEeJ4zSL32Dr3LVWz9
+        ZQI229DSsaA4nCT7oYXJVaSJCr63a8oemk2v6eRw1uvMe0AS7NKn/KCbEBrcB+Neav4YsNYZgAJxg2zh
+        5NNnvQ36b2CCZJr2CPcDN/HX+4+gCQh2+G2CLSgoKDgRg8FfRNDTu4tPw+gAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="btnAddPatient.Iconimage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAB6dJREFUeF7t
@@ -156,4 +173,7 @@
         0yhIVthLa1gFyQtz8ZluAAnNWp4p3SHI9wUszzRo0P/mCa5p3AgXIAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
