@@ -1,6 +1,6 @@
-﻿namespace Hospital.Desktop.Model.Entities
+﻿namespace Hospital.Domain.Entities
 {
-    public class Doctor 
+    public class Doctor
     {
         public int Id { get; set; }
 
